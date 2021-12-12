@@ -1,0 +1,29 @@
+<h1 id="tableLabel">Celebrities</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<button (click)="fetchCelebrities()">reset-data</button>
+
+<p *ngIf="!celebrities ||  celebrities==null"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="celebrities">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>birthDate</th>
+      <th>gender</th>
+      <th>image</th>
+      <th>jobTitle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let celebrity of celebrities">
+      <td>{{ celebrity.name }}</td>
+      <td>{{ celebrity.birthDate }}</td>
+      <td>{{ celebrity.gender }}</td>
+      <td><img [src]="celebrity.image" style="width:50px;height:50px" alt=""></td>
+      <td>{{ celebrity.jobTitle }}</td>
+      <td><button (click)="deleteCelebrity(celebrity)">delete</button></td>
+    </tr>
+  </tbody>
+</table>
